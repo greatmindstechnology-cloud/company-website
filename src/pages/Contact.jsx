@@ -59,7 +59,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h5 className="mb-2">Address</h5>
-                  <p className="text-gray-600">Mumbai, India<br />Serving US Businesses Nationwide</p>
+                  <p className="text-gray-600">2/518, Sundeep Avenue, 2nd Main Street, Nellangari, Chennai-600 155, Tamil Nadu, India<br />Serving US Businesses Nationwide</p>
                 </div>
               </div>
 
@@ -69,7 +69,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h5 className="mb-2">Phone</h5>
-                  <p className="text-gray-600">+1 (XXX) XXX-XXXX</p>
+                  <p className="text-gray-600">+91 98410 98721</p>
+                  <p className="text-gray-600">+91 73973 17174</p>
                 </div>
               </div>
 
@@ -79,7 +80,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h5 className="mb-2">Email</h5>
-                  <p className="text-gray-600">contact@allstatetech.com</p>
+                  <p className="text-gray-600">rasheed@allstatetechnologies.net</p>
                 </div>
               </div>
 
@@ -87,6 +88,30 @@ export default function Contact() {
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--color-green)" }}>
                   <Clock size={24} className="text-white" />
                 </div>
+                <div className="flex space-x-5">
+  <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--color-primary-blue)" }}>
+    <MapPin size={24} className="text-white" />
+  </div>
+  <div>
+    <h5 className="mb-2">GST Number</h5>
+    <p className="text-gray-600">33AAYFA6879K1ZJ</p>
+  </div>
+</div>
+
+<div className="flex space-x-5">
+  <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--color-accent-blue)" }}>
+    <Mail size={24} className="text-white" />
+  </div>
+  <div>
+    <h5 className="mb-2">Website</h5>
+    <p className="text-gray-600">
+      <a href="https://www.allstatetechnologies.net" target="_blank" rel="noopener noreferrer" className="underline">
+        www.allstatetechnologies.net
+      </a>
+    </p>
+  </div>
+</div>
+
                 <div>
                   <h5 className="mb-2">Operating Hours</h5>
                   <p className="text-gray-600">Mon-Fri: 9 AM – 6 PM EST</p>
