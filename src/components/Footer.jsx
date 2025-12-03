@@ -63,17 +63,17 @@ export default function Footer() {
 
               <li className="flex items-start space-x-2">
                 <MapPin size={16} style={{ color: "var(--color-green)" }} />
-                <span>Mumbai, India<br />Serving US Businesses</span>
+                <span>2/518, Sundeep Avenue, 2nd Main Street, Nellangari, Chennai-600 155, Tamil Nadu, India<br />Serving US Businesses</span>
               </li>
 
               <li className="flex items-center space-x-2">
                 <Phone size={16} style={{ color: "var(--color-green)" }} />
-                <span>+1 (XXX) XXX-XXXX</span>
+                <span>+91 98410 98721</span>
               </li>
 
               <li className="flex items-center space-x-2">
                 <Mail size={16} style={{ color: "var(--color-green)" }} />
-                <span>contact@allstatetech.com</span>
+                <span>rasheed@allstatetechnologies.net</span>
               </li>
 
             </ul>
