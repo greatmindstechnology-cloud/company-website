@@ -57,7 +57,7 @@ export default function Home() {
           <div className="p-8">
             <div className="text-5xl mb-4" style={{ color: "var(--color-primary-blue)" }}>200+</div>
             <h5 className="mb-2">Clients Served</h5>
-            <p className="text-gray-600">Trusted by businesses across America</p>
+            <p className="text-gray-600">Trusted by businesses internationally</p>
           </div>
 
           <div className="p-8">
