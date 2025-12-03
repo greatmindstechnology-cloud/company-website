@@ -62,9 +62,14 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-gray-400">
 
               <li className="flex items-start space-x-2">
-                <MapPin size={16} style={{ color: "var(--color-green)" }} />
-                <span>2/518, Sundeep Avenue, 2nd Main Street, Nellangari, Chennai-600 155, Tamil Nadu, India</span>
-              </li>
+  <span className="flex-shrink-0 w-5 h-5 mt-0.5" style={{ color: "var(--color-green)" }}>
+    <MapPin size={20} />
+  </span>
+  <span className="text-sm">
+    2/518, Sundeep Avenue, 2nd Main Street, Nellangari, Chennai - 600155, Tamil Nadu, India
+  </span>
+</li>
+
 
               <li className="flex items-center space-x-2">
                 <Phone size={16} style={{ color: "var(--color-green)" }} />
