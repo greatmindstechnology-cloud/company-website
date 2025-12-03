@@ -64,7 +64,7 @@ export default function Hero({ title, subtitle, primaryCTA, secondaryCTA, showIl
                     </div>
 
                     <p className="text-white text-lg">Professional Back-Office Solutions</p>
-                    <p className="text-white/70 text-sm mt-2">Trusted by 200+ US Companies</p>
+                    <p className="text-white/70 text-sm mt-2">Trusted by Many Oversess Companeess</p>
                   </div>
                 </div>
 
