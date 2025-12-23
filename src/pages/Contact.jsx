@@ -83,12 +83,7 @@ export default function Contact() {
                   <p className="text-gray-600">rasheed@allstatetechnologies.net</p>
                 </div>
               </div>
-
-              <div className="flex space-x-5">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--color-green)" }}>
-                  <Clock size={24} className="text-white" />
-                </div>
-                <div className="flex space-x-5">
+<div className="flex space-x-5">
   <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--color-primary-blue)" }}>
     <MapPin size={24} className="text-white" />
   </div>
@@ -112,6 +107,11 @@ export default function Contact() {
   </div>
 </div>
 
+              <div className="flex space-x-5">
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--color-green)" }}>
+                  <Clock size={24} className="text-white" />
+                </div>
+                
                 <div>
                   <h5 className="mb-2">Operating Hours</h5>
                   <p className="text-gray-600">Mon-Fri: 9 AM – 6 PM EST</p>
