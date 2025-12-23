@@ -12,10 +12,12 @@ import PayrollService from "./pages/Services/PayrollService.jsx";
 import FinanceService from "./pages/Services/FinanceService.jsx";
 import HRMSService from "./pages/Services/HRMSService.jsx";
 import LicensingService from "./pages/Services/LicensingService.jsx";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
     <Router>
+             <ScrollToTop />
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-grow">
