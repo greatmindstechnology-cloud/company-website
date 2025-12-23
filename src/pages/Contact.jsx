@@ -13,12 +13,38 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setSubmitted(false); // reset success if user edits again
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
+    if (loading) return;
+
+    setLoading(true);
+
+    try {
+      const response = await fetch(
+        "https://www.allstatetechnologies.net/contact.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok || result.error) {
+        throw new Error(result.error || "Failed to send");
+      }
+
+      setSubmitted(true);
       setFormData({
         name: "",
         email: "",
@@ -27,19 +53,21 @@ export default function Contact() {
         service: "",
         message: "",
       });
-    }, 3000);
+    } catch (error) {
+      alert("Message not sent. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
-
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
     <div>
-
       <Hero title="Contact Us" subtitle="Get in touch with our team" />
 
       <section className="py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
 
+          {/* LEFT */}
           <div>
             <div className="inline-block px-4 py-2 rounded-full bg-blue-50 text-blue-700 text-sm mb-4">
               Contact Information
@@ -52,78 +80,62 @@ export default function Contact() {
             </p>
 
             <div className="space-y-8">
+              <Info
+                icon={<MapPin size={24} />}
+                title="Address"
+                text={
+                  <>
+                    2/518, Sundeep Avenue, 2nd Main Street, Nellangari,
+                    Chennai-600155, Tamil Nadu, India
+                    <br />
+                    Serving US Businesses Nationwide
+                  </>
+                }
+                color="var(--color-green)"
+              />
 
-              <div className="flex space-x-5">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--color-green)" }}>
-                  <MapPin size={24} className="text-white" />
-                </div>
-                <div>
-                  <h5 className="mb-2">Address</h5>
-                  <p className="text-gray-600">2/518, Sundeep Avenue, 2nd Main Street, Nellangari, Chennai-600 155, Tamil Nadu, India<br />Serving US Businesses Nationwide</p>
-                </div>
-              </div>
+              <Info
+                icon={<Phone size={24} />}
+                title="Phone"
+                text={
+                  <>
+                    +91 98410 98721
+                    <br />
+                    +91 73973 17174
+                  </>
+                }
+                color="var(--color-primary-blue)"
+              />
 
-              <div className="flex space-x-5">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--color-primary-blue)" }}>
-                  <Phone size={24} className="text-white" />
-                </div>
-                <div>
-                  <h5 className="mb-2">Phone</h5>
-                  <p className="text-gray-600">+91 98410 98721</p>
-                  <p className="text-gray-600">+91 73973 17174</p>
-                </div>
-              </div>
+              <Info
+                icon={<Mail size={24} />}
+                title="Email"
+                text="rasheed@allstatetechnologies.net"
+                color="var(--color-accent-blue)"
+              />
 
-              <div className="flex space-x-5">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--color-accent-blue)" }}>
-                  <Mail size={24} className="text-white" />
-                </div>
-                <div>
-                  <h5 className="mb-2">Email</h5>
-                  <p className="text-gray-600">rasheed@allstatetechnologies.net</p>
-                </div>
-              </div>
-<div className="flex space-x-5">
-  <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--color-primary-blue)" }}>
-    <MapPin size={24} className="text-white" />
-  </div>
-  <div>
-    <h5 className="mb-2">GST Number</h5>
-    <p className="text-gray-600">33AAYFA6879K1ZJ</p>
-  </div>
-</div>
+              <Info
+                icon={<MapPin size={24} />}
+                title="GST Number"
+                text="33AAYFA6879K1ZJ"
+                color="var(--color-primary-blue)"
+              />
 
-<div className="flex space-x-5">
-  <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--color-accent-blue)" }}>
-    <Mail size={24} className="text-white" />
-  </div>
-  <div>
-    <h5 className="mb-2">Website</h5>
-    <p className="text-gray-600">
-      <a href="https://www.allstatetechnologies.net" target="_blank" rel="noopener noreferrer" className="underline">
-        www.allstatetechnologies.net
-      </a>
-    </p>
-  </div>
-</div>
-
-              <div className="flex space-x-5">
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "var(--color-green)" }}>
-                  <Clock size={24} className="text-white" />
-                </div>
-                
-                <div>
-                  <h5 className="mb-2">Operating Hours</h5>
-                  <p className="text-gray-600">Mon-Fri: 9 AM – 6 PM EST</p>
-                </div>
-              </div>
-
+              <Info
+                icon={<Clock size={24} />}
+                title="Operating Hours"
+                text="Mon–Fri: 9 AM – 6 PM EST"
+                color="var(--color-green)"
+              />
             </div>
           </div>
 
+          {/* RIGHT */}
           <div>
-            <div className="p-10 rounded-2xl bg-white border border-gray-100" style={{ boxShadow: "var(--shadow-large)" }}>
-
+            <div
+              className="p-10 rounded-2xl bg-white border border-gray-100"
+              style={{ boxShadow: "var(--shadow-large)" }}
+            >
               <div className="inline-block px-4 py-2 rounded-full bg-green-50 text-green-700 text-sm mb-4">
                 Send Us a Message
               </div>
@@ -132,21 +144,24 @@ export default function Contact() {
 
               {submitted ? (
                 <div className="p-8 rounded-xl text-center bg-green-600 text-white">
-                  <p>Thank you! We’ll get back to you within 24 hours.</p>
+                  Thank you! We’ll get back to you within 24 hours.
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
-
                   {["name", "email", "company"].map((field) => (
                     <div key={field}>
-                      <label className="block mb-3 text-sm">{field === "email" ? "Email Address *" : `${field.replace(/^\w/, c => c.toUpperCase())} *`}</label>
+                      <label className="block mb-3 text-sm">
+                        {field === "email"
+                          ? "Email Address *"
+                          : `${field.charAt(0).toUpperCase()}${field.slice(1)} *`}
+                      </label>
                       <input
                         type={field === "email" ? "email" : "text"}
                         name={field}
                         value={formData[field]}
                         required
                         onChange={handleChange}
-                        className="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2"
+                        className="w-full px-5 py-4 border border-gray-200 rounded-xl"
                       />
                     </div>
                   ))}
@@ -163,7 +178,9 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="block mb-3 text-sm">Service Interest *</label>
+                    <label className="block mb-3 text-sm">
+                      Service Interest *
+                    </label>
                     <select
                       name="service"
                       value={formData.service}
@@ -175,7 +192,9 @@ export default function Contact() {
                       <option value="payroll">Payroll Processing</option>
                       <option value="finance">Finance & Accounting</option>
                       <option value="hrms">HRMS Support</option>
-                      <option value="licensing">Licensing & Coordination</option>
+                      <option value="licensing">
+                        Licensing & Coordination
+                      </option>
                     </select>
                   </div>
 
@@ -188,27 +207,44 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       className="w-full px-5 py-4 border border-gray-200 rounded-xl resize-none"
-                      placeholder="Tell us about your requirements..."
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full px-8 py-5 rounded-xl text-white hover:scale-105"
-                    style={{ background: "linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%)" }}
+                    disabled={loading}
+                    className="w-full px-8 py-5 rounded-xl text-white"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%)",
+                    }}
                   >
-                    Submit Message
+                    {loading ? "Sending..." : "Submit Message"}
                   </button>
-
                 </form>
               )}
-
             </div>
           </div>
-
         </div>
       </section>
+    </div>
+  );
+}
 
+/* Reusable Info Component */
+function Info({ icon, title, text, color }) {
+  return (
+    <div className="flex space-x-5">
+      <div
+        className="w-14 h-14 rounded-2xl flex items-center justify-center text-white"
+        style={{ backgroundColor: color }}
+      >
+        {icon}
+      </div>
+      <div>
+        <h5 className="mb-2">{title}</h5>
+        <p className="text-gray-600">{text}</p>
+      </div>
     </div>
   );
 }
